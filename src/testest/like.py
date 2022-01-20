@@ -6,6 +6,7 @@ class LikeState(enum.Enum):
     liked = enum.auto()
     disliked = enum.auto()
 
+
 like_transitions = {
         LikeState.empty: LikeState.liked,
         LikeState.liked: LikeState.empty,
@@ -18,11 +19,14 @@ dislike_transitions = {
         LikeState.disliked: LikeState.empty,
         }
 
+
 def push_like(s: LikeState) -> LikeState:
     return like_transitions[s]
 
+
 def push_dislike(s: LikeState) -> LikeState:
     return dislike_transitions[s]
+
 
 def push_many(s: LikeState, pushes: str) -> LikeState:
     for c in pushes:
